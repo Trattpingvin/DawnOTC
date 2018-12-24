@@ -1,6 +1,7 @@
 import trueskill as ts
 from collections import defaultdict
 from random import random, randint, shuffle
+
 def get_data(name):
     with open(name) as f:
         raw_matches = f.readlines()
@@ -39,7 +40,7 @@ def rating_init(matches):
     return players
 
 def weight_star_bracket(players):
-    """Create list of obejcts needed for rest of the program
+    """Create list of objects needed for rest of the program
     get ratings: sort it using their weighted rank, and assign brackets, etc.
     return dict of Player() objects.
     """
@@ -70,6 +71,7 @@ class Player:
         self.rnk = ts.mu - self.sigma_weight * ts.sigma
         self.available = True
         self.played_time = 0
+        self.preference = [0,0,0] #0 is neutral, 1 is preferred, -1 is avoided.
 
     def __repr__(self):
         a = "{:12.12} | ".format(self.name)
@@ -94,8 +96,6 @@ class Player:
     def update_ts(self, r):
         self.ts = r
         self.rnk = r.mu - self.sigma_weight * r.sigma
-
-    def 
 
 def run_a_match(match, p, s):
     """given single match data, return resulting player information.

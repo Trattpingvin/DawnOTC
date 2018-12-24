@@ -1,0 +1,83 @@
+Martian Enterprise Tournament
+
+Welcome, Entrepreneurs of Mars! The United Nations has funded massive amount of investments to foster development of space colonies and raise new ventures. 
+
+Forming teams:
+    Sign-ups can volunteer as the captain of the team. Captains will gather up in a day and select players that they would like to have in their team in drafting day.
+    So, f you sign up as one, you can form your own team. Try to gather the best skilled players or player with the best chemistry, or both. There might be competitions, so choose wisely!
+
+    Drafting: Snake drafting. When you choose a pair, you cannot choose next round. The captain with the lowest rank will start first.
+
+Signing up:
+    Provide information about [
+        available days,
+        preferred locations,
+        preferred match types (1v1, 4pFFA)].
+    use (preferred, neutral, avoided) indication.
+    You can pair up with 1 friend you want to be in the same team.
+
+Game Schedule:
+    Main matches -- Saturdays and Sundays, from GMT 19 to GMT 22.
+        All games are seeded. Up to 6 matches per day (depending on sign-ups)
+    Practice workshops
+        on Wednesdays and Thursdays, casters will host commentated practice matches and provide tips about the games.
+
+Game Types:
+    1v1 (filler).
+    4pFFA (main).
+
+After the Tournament:
+    Winning a match, regardless of brackets or formats, will grant you 1 point. If the player has fulfilled their award conditions, they get extra 0.1 point per award.
+
+    Medals:
+        "Fully Funded" for the team with maximum amount of point total.
+        "Most Valuable Entrepreneur" for the players with maximum amount of point total within a team.
+        "High Potential" for the player who has gained the most amount of rank from the start of the tournament.
+        "Skilled" for the player with maximum amount of awards.
+
+Player rankings:
+    Initially, players will be ranked from 1 to 3 according to their past game records and they can get to up to rank 5. Winning or losing game will affect their rankings for this tournament.
+
+    Ranking system:
+        Stars:
+            Players get a stat called stars. Players can have stars from 0 and up to 3.
+            Players start with having two stars.
+        Winning:
+            When a player wins, they gain two stars. 
+            If a player won against a player who has higher rank, they get an extra star.
+            When a player would have more than 3 stars due to winning, their rank increases by 1, and they will have one star.
+        Losing:
+            When a player loses, they lose a star.
+            When a player loses stars below zero, they lose a rank, and they will have 3 stars.
+    
+    These ranks will be used for setting up matchmaking.
+
+Matchmaking:
+    The organizers will make matches accounting for player availability, preferred formats and locations, ranks, and previously matched opponents.
+
+Awards:
+    Day 1:
+        Race for the Initial Markets:
+            At least 2 green prices on the market at the start of game.
+            Earn the most amount of money green (double priced) markets on sol 2.
+
+    Day 2:
+        Eggs in Multiple Baskets:
+            At least 2 AOE attacks are available on black market.
+            Do not have more than 4 tiles connected together at the end of the game.
+
+    Day 3:
+        Commercial Meteorology Experiment:
+            Magnetic storms are available on black market.
+            The player who has used the most amount of it will get an award.
+
+    Day 4:
+        Mind Games:
+            Mutiny is available on the black market.
+            Bounce a destructive black market item (all targeted attacks except for network virus or circuit overload) on a mutinied building.
+
+    All Days:
+        Keen Eyes on Their Stuff:
+            Use a Network Virus on unprofitable buildings.
+        Outstanding Performance:
+            Win against a higher ranked player.
