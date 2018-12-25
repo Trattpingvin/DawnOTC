@@ -1,12 +1,6 @@
 Martian Enterprise Tournament
 
-Welcome, Entrepreneurs of Mars! The United Nations has funded massive amount of investments to foster development of space colonies and raise new ventures. 
-
-Forming teams:
-    Sign-ups can volunteer as the captain of the team. Captains will gather up in a day and select players that they would like to have in their team in drafting day.
-    So, f you sign up as one, you can form your own team. Try to gather the best skilled players or player with the best chemistry, or both. There might be competitions, so choose wisely!
-
-    Drafting: Snake drafting. When you choose a pair, you cannot choose next round. The captain with the lowest rank will start first.
+Welcome, Entrepreneurs of Mars! The United Nations has made massive investments to foster development of space colonies, creating opportunites for new actors to enter the market.
 
 Signing up:
     Provide information about [
@@ -16,46 +10,25 @@ Signing up:
     use (preferred, neutral, avoided) indication.
     You can pair up with 1 friend you want to be in the same team.
 
+Forming teams:
+    Sign-ups can volunteer as the captain of the team. Captains will be in charge of drafting their team. Try to gather the best skilled players or players with the best chemistry, or both. The other captains might have a similar strategy, so choose wisely!
+    Drafting will take place live before the tournament starts, and players will be picked using a snake rotation (A B C D D C B A). If a captain wants to draft a pair who joined together, they will forego their next turn in the draft. The opening order will be in reverse order of captain rank(based on previous tournament results).
+
 Game Schedule:
     Main matches -- Saturdays and Sundays, from GMT 19 to GMT 22.
         All games are seeded. Up to 6 matches per day (depending on sign-ups)
     Practice workshops
-        on Wednesdays and Thursdays, casters will host commentated practice matches and provide tips about the games.
+        on Wednesdays and Thursdays, casters will host practice matches and provide players with tips, providing learning opportunities.
 
 Game Types:
-    1v1 (filler).
     4pFFA (main).
-
-After the Tournament:
-    Winning a match, regardless of brackets or formats, will grant you 1 point. If the player has fulfilled their award conditions, they get extra 0.1 point per award.
-
-    Medals:
-        "Fully Funded" for the team with maximum amount of point total.
-        "Most Valuable Entrepreneur" for the players with maximum amount of point total within a team.
-        "High Potential" for the player who has gained the most amount of rank from the start of the tournament.
-        "Skilled" for the player with maximum amount of awards.
-
-Player rankings:
-    Initially, players will be ranked from 1 to 3 according to their past game records and they can get to up to rank 5. Winning or losing game will affect their rankings for this tournament.
-
-    Ranking system:
-        Stars:
-            Players get a stat called stars. Players can have stars from 0 and up to 3.
-            Players start with having two stars.
-        Winning:
-            When a player wins, they gain two stars. 
-            If a player won against a player who has higher rank, they get an extra star.
-            When a player would have more than 3 stars due to winning, their rank increases by 1, and they will have one star.
-        Losing:
-            When a player loses, they lose a star.
-            When a player loses stars below zero, they lose a rank, and they will have 3 stars.
+    1v1 (filler).
     
-    These ranks will be used for setting up matchmaking.
 
-Matchmaking:
-    The organizers will make matches accounting for player availability, preferred formats and locations, ranks, and previously matched opponents.
+Scoring:
+    Winning a match, regardless of brackets or formats, will grant you 1 point. Additionally, they will get 0.1 points per award.
 
-Awards:
+    Awards:
     Day 1:
         Race for the Initial Markets:
             At least 2 green prices on the market at the start of game.
@@ -81,3 +54,33 @@ Awards:
             Use a Network Virus on unprofitable buildings.
         Outstanding Performance:
             Win against a higher ranked player.
+
+
+    Additionally, at the end of tournament you can get a special medal for your performance!
+    Medals:
+        "Fully Funded" for the team with maximum amount of point total.
+        "Most Valuable Entrepreneur" for the players with maximum amount of point total within a team.
+        "High Potential" for the player who has gained the most amount of rank from the start of the tournament.
+        "Skilled" for the player with maximum amount of awards.
+
+
+Player rankings:
+    Initially, players will be ranked from 1(low) to 3(high) according to their performance in previous tournaments. Winning or losing game will affect their rankings for this tournament, where you can rise as high as rank 5.
+
+    Ranking system:
+        Stars:
+            Players get a stat called stars. Players can have stars from 0 and up to 3.
+            Players start with having two stars.
+        Winning:
+            When a player wins, they gain two stars. 
+            If a player won against a player who has higher rank, they get an extra star.
+            When a player would have more than 3 stars due to winning, their rank increases by 1, and they will have one star.
+        Losing:
+            When a player loses, they lose a star.
+            When a player loses stars below zero, they lose a rank, and they will have 3 stars.
+    
+    These ranks will be used for setting up matchmaking.
+
+Matchmaking:
+    The organizers will make matches accounting for player availability, preferred formats and locations, ranks, and previously matched opponents.
+
