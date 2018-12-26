@@ -1,6 +1,7 @@
 import trueskill as ts
 from collections import defaultdict
-from random import random, randint, shuffle
+from random import random, randint, shuffle, choice
+import matchmaking
 
 def get_data(name):
     with open(name) as f:
@@ -70,7 +71,8 @@ class Player:
         self.ts = ts
         self.rnk = ts.mu - self.sigma_weight * ts.sigma
         self.available = True
-        self.played_time = 0
+        self.matches_played = 0
+        self.matches_assigned = 0
         self.preference = [0,0,0] #0 is neutral, 1 is preferred, -1 is avoided.
 
     def __repr__(self):
@@ -92,6 +94,9 @@ class Player:
         return self.bracket < other.bracket or (self.bracket == other.bracket and self.rnk < other.rnk)
     def __eq__(self, other): #==
         return self.bracket == other.bracket and self.rnk == other.rnk
+
+    def get_num_matches(self):
+        return self.matches_assigned+self.matches_played
 
     def update_ts(self, r):
         self.ts = r
@@ -210,55 +215,10 @@ def get_priority(players, selected=None):
     """
     pass
 
-def generate_a_match(pivot, players):
-    """pick a starting person -- the least flexible & least played person
-    look at other teams to find best match < 3 teams will try to match this person
-    function: take a player, list of players in another team > return best matching player
-    """
+def pick_a_winner(players):
+    #TODO write this
+    return [1,1,1,0]
 
-    pass
-
-def generate_matches(players, max_matches = 10, mode="test"):
-    teams = defaultdict(list)
-    matches = []
-    results = []
-
-    #availability, team
-    for v in players.values():
-        t = v.team
-        if v.available: teams[t].append(v)
-
-    #assign FFA
-    #sort teams from smallest (a) to largest (d)
-    a, b, c, d = sorted(teams.values(), key=lambda kv:len(kv))
-    shuffle(a)
-    #HELPME tratt!
-
-    for _ in range(max_matches):
-        match = generate_a_match(players)
-        matches.append(match)
-        if mode == "test": #when test, it has to generate results as well.
-            results.append(simulate_a_match(match))
-
-    # in the smallest team, assign up to 8 FFA matches.
-    # assigned opponents should be chosen from the similar bracket, and do so randomly.
-    # rules: [a, a, a, a] OR [a, a, a-1, a-1] OR [a, a, a, a-1], decreasing priority
-    #   ^ a means a player's bracket
-    # 1v1 matches will be assigned to fill up (max_matches - set_matches) count of matches.
-    # choose pairs and they will be assigned to 1v1s.
-    # should we ask whether they would sign up for 1v1 as well during enrollment?
-    return matches, results
-
-    """
-    Match generation:
-        availability, team, bracket, randomness
-        1. filter only available players
-        2. divide into 4 teams
-        3. start with team with fewest available players, assign FFA match.
-        4. once a team has depleted, 1v1 match is generated.
-        5. 1v1 match will always look for same bracket players first
-        6. if there are so few 1v1s, some FFA matches might be converted into 2 1v1s.
-    """
 
 def simulation_summary(players, summary=None, lowest_level = 1):
     brackets = [0] * max_level
@@ -299,20 +259,23 @@ if __name__ == "__main__":
     assign_teams(players)
     simulation_summary(players, lowest_level=None)
 
-    #"""
-    #random data simulation
-    #generate_availability(players)
-    #matches = generate_matches(players)
+    availability = generate_availability(players)
+    matches = matchmaking.generate_matches(players)
+    
+    for match in matches:
+        match_string = "<"
+        for i in range(len(match)-1):
+            match_string += match[i].name+", "
+        i += 1
+        match_string += match[i].name+">"
+        print(match_string)
+
+        #pick_a_winner(match) suggestion on how to handle this, i just made the matchmaking
+
+
     #summary = simulate_matches(matches, players)
     #simulation_summary(players, summary=summary, lowest_level=1)
 
-    #""
-    """
-    availability = generate_availability(players)
-    matches = generate_matches(players, availability)
-    summary = simulate_matches(matches, players)
-    simulation_summary(players, summary=summary, lowest_level=1)
-    """
 
     """
     #same data simulation
