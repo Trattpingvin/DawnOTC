@@ -50,32 +50,44 @@ def simulation_summary(players, summary=None, lowest_level = 1):
     if summary:
         print(summary)
 
+def printseparator(day=None):
+    middle = ""
+    if day: middle = " DAY {} ".format(day)
+    print()
+    print("==============" + middle + "==============")
+    print()
+    
 if __name__ == "__main__":
     data1 = testing.get_data("ABTdata1.txt")
     data2 = testing.get_data("ABTdata.txt")
     players = testing.rating_init(data1 + data2)
     setup_brackets(players) #alters players
     testing.assign_teams(players)
-    simulation_summary(players, lowest_level=None)
 
+    #initial bracket info
+    simulation_summary(players, lowest_level=None)
+    
     #day 1
+    printseparator(1)
     testing.generate_availability(players)
     matches = matchmaking.generate_matches(players)
     for match in matches:
         print(match)
     s = run_matches(matches, mode="test")
     simulation_summary(players, summary=s, lowest_level=1)
-
-    """
+    
     #FIXME cannot run second match generation.
     #       it seems to run out of pool in find_best_opponents().
     #       not sure why.
     
     #day 2
+    printseparator(2)
     testing.generate_availability(players)
-    matches = matchmaking.generate_matches(players)
+    matches = matchmaking.generate_matches(players) #FIXME
     for match in matches:
         print(match)
     s = run_matches(matches, mode="test")
     simulation_summary(players, summary=s, lowest_level=1)
-    """
+
+
+    

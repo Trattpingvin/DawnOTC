@@ -25,7 +25,8 @@ class Player:
         self.available = True
         self.matches_played = 0
         self.matches_assigned = 0
-        self.preference = [0,0,0] #0 is neutral, 1 is preferred, -1 is avoided.
+        self.preference = [0,0,0] #0 is no info, 1 is preferred, -1 is avoided.
+                                  #[Mars, Ceres, Io]
 
         #trueskill related
         self.ts = ts
@@ -38,8 +39,9 @@ class Player:
         d = "OP Award:{:2} | ".format(self.awards["op"])
         e = "Team: {} | ".format(self.team)
         f = "TS: {:06.3f} | ".format(round(self.rnk,3))
-        g = "W:{} L:{}".format(self.wins, self.loses)
-        return a+b+c+d+e+f+g
+        g = "W:{} L:{} P:{} | ".format(self.wins, self.loses, self.matches_played)
+        h = "Availability: {} {}".format("#" if self.available else ".", self.preference)
+        return a+b+c+d+e+f+g+h
     
     #compare strength of players, using bracket (primary) and rank (secondary)
     def __ge__(self, other): return self.__gt__(other) or self.__eq__(other)
@@ -111,12 +113,23 @@ class Match:
     def win_probability(self, team1, team2):
         """Win probability function from snippet of Trueskill documentation.
         For testing purposes only."""
+        #because FFA, let's assume team1 is made of 3 identical players.
         delta_mu = 3 * sum(r.mu for r in team1) - sum(r.mu for r in team2)
         sum_sigma = sum(r.sigma ** 2 for r in itertools.chain(team1, team2))
         size = len(team1) + len(team2)
         denom = math.sqrt(size * (self.BETA * self.BETA) + sum_sigma)
         t = ts.global_env()
         return t.cdf(delta_mu / denom)
+
+    def sub(self, subout, subin): #not tested
+        """Given a Player, replace them with another."""
+        for idx, p in enumerate(self.players):
+            if p is subout:
+                subin.matches_assigned = subout.matches_assigned
+                subout.matches_assigned = 0
+                self.players[idx] = subin
+                return
+        raise ValueError("Subout player does not exist")
 
     def process_match(self):
         if len(self.result) != len(self.players):
@@ -174,12 +187,10 @@ class Match:
                 #update values
                 p.bracket = my_level
                 p.stars = my_stars
-                #p.matches_played += p.matches_assigned #not sure if this was updated or not.
-                #p.matches_assigned = 0
+                p.matches_played += p.matches_assigned #not sure if this was updated or not.
+                p.matches_assigned = 0
 
             return stats
-                        
-
 
 """
 #Testing for win probability.
