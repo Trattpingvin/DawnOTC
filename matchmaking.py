@@ -1,6 +1,7 @@
 from collections import defaultdict
 import random
 import pdb
+from classes import Match
 
 def rank_difference(player1, player2):
     return abs(player1.bracket-player2.bracket)
@@ -42,13 +43,12 @@ def generate_a_match(players):
     """
     teams = defaultdict(list)
 
-
     #availability, team
     for v in players.values():
         t = v.team
         if v.available: teams[t].append(v)
 
-    teams = sorted(teams.values(), key=lambda kv:len(kv))
+    teams = sorted(teams.values(), key=lambda v:len(v))
 
     for team in teams:
         if len(team)==0:
@@ -67,12 +67,13 @@ def generate_a_match(players):
         
     while len(players)>0 and players[0].get_num_matches()==min_played:
         pool.append(players.pop(0))
+        #NOTE: does this mean only players with same number of games played will be matched together?
 
-    #from the pool, find hte least represented team, and if they have more than one candidate, choose the one with the most restrictive preferences
+    #from the pool, find the least represented team, and if they have more than one candidate, choose the one with the most restrictive preferences
     teams = defaultdict(list)
     for player in pool:
         teams[player.team].append(player)
-    teams = sorted(teams.values(), key=lambda kv:len(kv))
+    teams = sorted(teams.values(), key=lambda v:len(v))
 
     chosen_team = teams[0]
 
@@ -87,16 +88,16 @@ def generate_a_match(players):
     return find_opponents(chosen_player, [t for t in teams if t!=chosen_team])
 
 
-def generate_matches(players, max_matches = 10, mode="test"):
+def generate_matches(players, max_matches = 10):
     """Changes player state
     """
     matches = []
-    results = []
+
     for _ in range(max_matches):
-        match = generate_a_match(players)
-
-
-        for player in match:
+        match_raw = generate_a_match(players)
+        for player in match_raw:
             player.matches_assigned += 1 #STATE CHANGE ALERT
+
+        match = Match(match_raw)
         matches.append(match)
     return matches

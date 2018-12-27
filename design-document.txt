@@ -28,16 +28,16 @@ Game Types:
 Scoring:
     Winning a match, regardless of brackets or formats, will grant you 1 point. Additionally, they will get 0.1 points per award.
 
-    Awards:
+Awards:
     Day 1:
         Race for the Initial Markets:
             At least 2 green prices on the market at the start of game.
-            Earn the most amount of money green (double priced) markets on sol 2.
+            Additional 0.1 point will be awarded to the player who earned the most money from those markets by sol 2.
 
     Day 2:
         Eggs in Multiple Baskets:
             At least 2 AOE attacks are available on black market.
-            Do not have more than 4 tiles connected together at the end of the game.
+            Players who don't have more than 4 tiles connected together at the end of the game are awarded 0.1 point.
 
     Day 3:
         Commercial Meteorology Experiment:
