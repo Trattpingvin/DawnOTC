@@ -89,7 +89,7 @@ class Match:
         dice_threshold = []
         acc = 0
         for idx, p in enumerate(self.players):
-            team1 = [p.ts]
+            team1 = [p.ts]*3
             team2 = [v.ts for v in self.players[:idx] + self.players[idx+1:]]
             prob = self.win_probability(team1, team2)
             acc += prob
@@ -107,6 +107,7 @@ class Match:
                 winner_idx = idx
             else:
                 self.result.append(1) #lose
+            prev = d
 
         return winner, winner_idx
 
@@ -114,8 +115,8 @@ class Match:
         """Win probability function from snippet of Trueskill documentation.
         For testing purposes only."""
         #because FFA, let's assume team1 is made of 3 identical players.
-        delta_mu = 3 * sum(r.mu for r in team1) - sum(r.mu for r in team2)
-        sum_sigma = sum(r.sigma ** 2 for r in itertools.chain(team1, team2))
+        delta_mu = sum(r.mu for r in team1*3) - sum(r.mu for r in team2)
+        sum_sigma = sum(r.sigma ** 2 for r in itertools.chain(team1*3, team2))
         size = len(team1) + len(team2)
         denom = math.sqrt(size * (self.BETA * self.BETA) + sum_sigma)
         t = ts.global_env()
@@ -192,7 +193,7 @@ class Match:
 
             return stats
 
-"""
+
 #Testing for win probability.
 a = Player("A", ts = ts.Rating(30,1))
 b = Player("B", ts = ts.Rating(30,10))
@@ -202,4 +203,4 @@ p = [a,b,c,d]
 m = Match(p)
 x = m.generate_random_win()
 print(x)
-"""
+
