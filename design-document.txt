@@ -4,15 +4,17 @@ Welcome, Entrepreneurs of Mars! The United Nations has made massive investments 
 
 Signing up:
     Provide information about [
-        available days,
-        preferred locations,
-        preferred match types (1v1, 4pFFA)].
+        your steam name,
+        available days (optional, used for matchmaking),
+        your partner (optional),
+        vetoed location (optional),
+        vetoed format (optional. You can veto 1v1)].
     use (preferred, neutral, avoided) indication.
     You can pair up with 1 friend you want to be in the same team.
 
 Forming teams:
     Sign-ups can volunteer as the captain of the team. Captains will be in charge of drafting their team. Try to gather the best skilled players or players with the best chemistry, or both. The other captains might have a similar strategy, so choose wisely!
-    Drafting will take place live before the tournament starts, and players will be picked using a snake rotation (A B C D D C B A). If a captain wants to draft a pair who joined together, they will forego their next turn in the draft. The opening order will be in reverse order of captain rank(based on previous tournament results).
+    Drafting will take place at Jan 19th, and players will be picked using a snake rotation (A B C D D C B A). If a captain wants to draft a pair who joined together, they will forego their next turn in the draft. The opening order will be in reverse order of captain rank(based on previous tournament results).
 
 Game Schedule:
     Main matches -- Saturdays and Sundays, from GMT 19 to GMT 22.
@@ -42,19 +44,20 @@ Awards:
     Day 3:
         Commercial Meteorology Experiment:
             Magnetic storms are available on black market.
-            The player who has used the most amount of it will get an award.
+            The player who has used the most amount of it will get an additional 0.1 point.
 
     Day 4:
         Mind Games:
             Mutiny is available on the black market.
-            Bounce a destructive black market item (all targeted attacks except for network virus or circuit overload) on a mutinied building.
-            Buy the most amount of black market items.
+            Additional 0.1 point will be awarded for players who bounce destructive black market item(s)* on mutiny-gooned buildings.
+            The player who buys the most amount of black market items will also get an additional 0.1 point.
+            *(does not include network virus or circuit overload.)
 
     All Days:
         Keen Eyes on Their Stuff:
-            Use a Network Virus on unprofitable buildings.
+            Using a Network Virus on unprofitable buildings awards 0.1 point.
         Outstanding Performance:
-            Win against a higher ranked player.
+            Winning against a higher ranked player gives an extra 0.1 point.
 
 
     Additionally, at the end of tournament you can get a special medal for your performance!
