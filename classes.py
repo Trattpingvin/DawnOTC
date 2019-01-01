@@ -156,14 +156,14 @@ class Match:
                 
                 #win-lose
                 if self.result[idx] == 0: #win
-                    op_bonus = max(0, other_level - my_level)
+                    op_bonus = 1 if other_level - my_level > 0 else 0
                     my_stars += win_bonus + op_bonus
                     p.awards["op"] += op_bonus #alter Player
                     p.wins += 1 #alter player
 
                 elif self.result[idx] == 1: #lose
                     my_stars += lose_malus
-                    p.loses += 1
+                    p.loses += 1 #alter player
 
                 #applying results
                 if my_stars < 0:

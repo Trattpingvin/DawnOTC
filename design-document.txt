@@ -48,6 +48,7 @@ Awards:
         Mind Games:
             Mutiny is available on the black market.
             Bounce a destructive black market item (all targeted attacks except for network virus or circuit overload) on a mutinied building.
+            Buy the most amount of black market items.
 
     All Days:
         Keen Eyes on Their Stuff:
