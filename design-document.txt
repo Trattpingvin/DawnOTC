@@ -5,8 +5,9 @@ Welcome, Entrepreneurs of Mars! The United Nations has made massive investments 
 Signing up:
     Provide information about [
         your steam name,
-        available days (optional, used for matchmaking),
         your partner (optional),
+        enlisting as a captain (optional),
+        available days (optional, used for matchmaking),
         vetoed location (optional),
         vetoed format (optional. You can veto 1v1)].
     use (preferred, neutral, avoided) indication.
@@ -28,36 +29,36 @@ Game Types:
     
 
 Scoring:
-    Winning a match, regardless of brackets or formats, will grant you 1 point. Additionally, they will get 0.1 points per award.
+    Winning a match, regardless of brackets or formats, will grant you 1 point. Additionally, they will get 0.2 points per award.
 
 Awards:
     Day 1:
         Race for the Initial Markets:
             At least 2 green prices on the market at the start of game.
-            Additional 0.1 point will be awarded to the player who earned the most money from those markets by sol 2.
+            Additional 0.2 point will be awarded to the player who earned the most money from those markets by sol 3.
 
     Day 2:
         Eggs in Multiple Baskets:
             At least 2 AOE attacks are available on black market.
-            Players who don't have more than 4 tiles connected together at the end of the game are awarded 0.1 point.
+            Players who don't have more than 4 tiles connected together at the end of the game are awarded 0.2 point.
 
     Day 3:
         Commercial Meteorology Experiment:
             Magnetic storms are available on black market.
-            The player who has used the most amount of it will get an additional 0.1 point.
+            The player who has used the most amount of it will get an additional 0.2 point.
 
     Day 4:
         Mind Games:
             Mutiny is available on the black market.
-            Additional 0.1 point will be awarded for players who bounce destructive black market item(s)* on mutiny-gooned buildings.
-            The player who buys the most amount of black market items will also get an additional 0.1 point.
+            Additional 0.2 point will be awarded for players who bounce destructive black market item(s)* on mutiny-gooned buildings.
+            The player who buys the most amount of black market items will also get an additional 0.2 point.
             *(does not include network virus or circuit overload.)
 
     All Days:
         Keen Eyes on Their Stuff:
-            Using a Network Virus on unprofitable buildings awards 0.1 point.
+            Using a Network Virus on unprofitable buildings awards 0.2 point.
         Outstanding Performance:
-            Winning against a higher ranked player gives an extra 0.1 point.
+            Winning against a higher ranked player gives an extra 0.2 point.
 
 
     Additionally, at the end of tournament you can get a special medal for your performance!
