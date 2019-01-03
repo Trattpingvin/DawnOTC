@@ -18,7 +18,7 @@ class Player:
         self.stars = starting_stars
         
         self.wins = 0
-        self.loses = 0
+        self.losses = 0
         self.awards = {"op":0, "nv":0, "d1":0, "d2":0, "d3":0, "d4":0}
 
         #matchmaking related
@@ -39,7 +39,7 @@ class Player:
         d = "OP Award:{:2} | ".format(self.awards["op"])
         e = "Team: {} | ".format(self.team)
         f = "TS: {:06.3f} | ".format(round(self.rnk,3))
-        g = "W:{} L:{} P:{} | ".format(self.wins, self.loses, self.matches_played)
+        g = "W:{} L:{} P:{} | ".format(self.wins, self.losses, self.matches_played)
         h = "Availability: {} {}".format("#" if self.available else ".", self.preference)
         return a+b+c+d+e+f+g+h
     
@@ -163,7 +163,7 @@ class Match:
 
                 elif self.result[idx] == 1: #lose
                     my_stars += lose_malus
-                    p.loses += 1 #alter player
+                    p.losses += 1 #alter player
 
                 #applying results
                 if my_stars < 0:
@@ -193,14 +193,15 @@ class Match:
 
             return stats
 
-
-#Testing for win probability.
-a = Player("A", ts = ts.Rating(30,1))
-b = Player("B", ts = ts.Rating(30,10))
-c = Player("C", ts = ts.Rating(25,3))
-d = Player("D", ts = ts.Rating(25,1))
-p = [a,b,c,d]
-m = Match(p)
-x = m.generate_random_win()
-print(x)
+#TODO why is this here? putting it in ifmain for now
+if __name__ == '__main__':
+    #Testing for win probability.
+    a = Player("A", ts = ts.Rating(30,1))
+    b = Player("B", ts = ts.Rating(30,10))
+    c = Player("C", ts = ts.Rating(25,3))
+    d = Player("D", ts = ts.Rating(25,1))
+    p = [a,b,c,d]
+    m = Match(p)
+    x = m.generate_random_win()
+    print(x)
 

@@ -25,52 +25,35 @@ def find_best_opponents(player, team):
             best_matched_rank = rank
             pool.append(p)
             continue
-        return pool
-
+        return pool 
+    return pool
 
 def find_opponents(player, otherteams):
     match = [player] 
 
     for team in otherteams:
+        assert len(team)>0
         pool = find_best_opponents(player, team)
+        assert len(pool)>0
         match.append(random.choice(pool)) #we could look at preferences here instead of just taking one at random
-        
+        # or just take the one with least amount of games played? but then we have no random factor
+    if len(match)==1:
+        pdb.set_trace()
     return match
 
-def generate_a_match(players):
-    """pick a starting person -- the least flexible & least played person
-    look at other teams to find best match < 3 teams will try to match this person
-    """
-    teams = defaultdict(list)
-
-    #availability, team
-    for v in players.values():
-        t = v.team
-        if v.available: teams[t].append(v)
-
-    teams = sorted(teams.values(), key=lambda v:len(v))
-
-    for team in teams:
-        if len(team)==0:
-            raise ValueError("Team has no available players")
-        elif len(team)==1:
-            #team has only one available player
-            return find_opponents(team[0], [t for t in teams if t!=team])
-
-    pool = []
+def least_played(players):
+    """ Out of players, return the player to be chosen as base for generating a match. Should be one with least amount of matches played.  """
     
-    #find all the players with the least amount of matches played
-
+    pool = []
     players = sorted(players.values(), key=lambda x : x.get_num_matches())#sort by least used players
     min_played = players[0].get_num_matches()
     current_played = min_played
         
     while len(players)>0 and players[0].get_num_matches()==min_played:
         pool.append(players.pop(0))
-        #NOTE: does this mean only players with same number of games played will be matched together?
 
     #from the pool, find the least represented team, and if they have more than one candidate, choose the one with the most restrictive preferences
-    teams = defaultdict(list)
+    teams = defaultdict(list) #one per team
     for player in pool:
         teams[player.team].append(player)
     teams = sorted(teams.values(), key=lambda v:len(v))
@@ -85,7 +68,34 @@ def generate_a_match(players):
             chosen_player = player
             max_chosen_player_preference = preference
 
-    return find_opponents(chosen_player, [t for t in teams if t!=chosen_team])
+    return chosen_player
+  
+
+def generate_a_match(players):
+    """pick a starting person -- the least flexible & least played person
+    look at other teams to find best match < 3 teams will try to match this person
+    """
+    teams = defaultdict(list)
+
+    #availability, team
+    for v in players.values():
+        t = v.team
+        if v.available: teams[t].append(v)
+
+    teams_sorted = sorted(teams.values(), key=lambda v:len(v))
+
+    for team in teams_sorted:
+        if len(team)==0:
+            raise ValueError("Team has no available players")
+        elif len(team)==1:
+            #team has only one available player
+            return find_opponents(team[0], [t for t in teams_sorted if t!=team])
+
+   
+
+    chosen_player = least_played(players)
+    
+    return find_opponents(chosen_player, [value for key, value in teams.iteritems() if key!=chosen_player.team])
 
 
 def generate_matches(players, max_matches = 10):
