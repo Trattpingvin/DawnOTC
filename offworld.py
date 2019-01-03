@@ -67,27 +67,17 @@ if __name__ == "__main__":
     #initial bracket info
     simulation_summary(players, lowest_level=None)
     
-    #day 1
-    printseparator(1)
-    testing.generate_availability(players)
-    matches = matchmaking.generate_matches(players)
-    for match in matches:
-        print(match)
-    s = run_matches(matches, mode="test")
-    simulation_summary(players, summary=s, lowest_level=1)
+  
+    for day in range(1,5):
+        printseparator(day)
+        testing.generate_availability(players)
+        matches = matchmaking.generate_matches(players)
+        for match in matches:
+            print(match)
+        s = run_matches(matches, mode="test")
+        simulation_summary(players, summary=s, lowest_level=1)
+ 
     
-    #FIXME cannot run second match generation.
-    #       it seems to run out of pool in find_best_opponents().
-    #       not sure why.
-    
-    #day 2
-    printseparator(2)
-    testing.generate_availability(players)
-    matches = matchmaking.generate_matches(players) #FIXME
-    for match in matches:
-        print(match)
-    s = run_matches(matches, mode="test")
-    simulation_summary(players, summary=s, lowest_level=1)
-
+  
 
     
