@@ -58,25 +58,26 @@ def printseparator(day=None):
     print()
     
 if __name__ == "__main__":
-    data1 = testing.get_data("ABTdata1.txt")
-    data2 = testing.get_data("ABTdata.txt")
-    players = testing.rating_init(data1 + data2)
+    #data1 = testing.get_data("ABTdata1.txt")
+    #data2 = testing.get_data("ABTdata.txt")
+    #players = testing.rating_init(data1 + data2)
+    players = testing.signups()
     setup_brackets(players) #alters players
     testing.assign_teams(players)
 
     #initial bracket info
-    simulation_summary(players, lowest_level=None)
+    #simulation_summary(players, lowest_level=None)
     
   
     for day in range(1,5):
         printseparator(day)
         testing.generate_availability(players)
+        simulation_summary(players, lowest_level=1)
         matches = matchmaking.generate_matches(players)
         for match in matches:
             print(match)
         s = run_matches(matches, mode="test")
-        simulation_summary(players, summary=s, lowest_level=1)
- 
+        #simulation_summary(players, summary=s, lowest_level=1)
     
   
 

@@ -39,7 +39,7 @@ class Player:
         d = "OP Award:{:2} | ".format(self.awards["op"])
         e = "Team: {} | ".format(self.team)
         f = "TS: {:06.3f} | ".format(round(self.rnk,3))
-        g = "W:{} L:{} P:{} | ".format(self.wins, self.losses, self.matches_played)
+        g = "W:{} L:{} P:{} | ".format(self.wins*3, self.losses, self.matches_played)
         h = "Availability: {} {}".format("#" if self.available else ".", self.preference)
         return a+b+c+d+e+f+g+h
     
@@ -139,13 +139,14 @@ class Match:
         elif not self.processed:
             self.processed = True
             stats = defaultdict(int)
-
+            """
             #update trueskill ratings
             players_ratings = [(p.ts,) for p in self.players]
             resulting_ratings = ts.rate(players_ratings, ranks=self.result)
             for idx, rating in enumerate(resulting_ratings):
                 self.players[idx].update_ts(rating[0]) #alter player
-
+            """
+            
             #update player 
             for idx, p in enumerate(self.players):
                 #setup

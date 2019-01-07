@@ -35,8 +35,17 @@ def find_opponents(player, otherteams):
         assert len(team)>0
         pool = find_best_opponents(player, team)
         assert len(pool)>0
-        match.append(random.choice(pool)) #we could look at preferences here instead of just taking one at random
-        # or just take the one with least amount of games played? but then we have no random factor
+        
+        least = pool[0].get_num_matches()
+        chosen_players = []
+        for player in pool:
+            if player.get_num_matches() < least:
+                least = player.get_num_matches()
+        for player in pool:
+            if player.get_num_matches() == least:
+                chosen_players.append(player)
+        match.append(random.choice(chosen_players))
+
     if len(match)==1:
         pdb.set_trace()
     return match
@@ -69,7 +78,7 @@ def least_played(players):
             max_chosen_player_preference = preference
 
     return chosen_player
-  
+
 
 def generate_a_match(players):
     """pick a starting person -- the least flexible & least played person
@@ -95,7 +104,7 @@ def generate_a_match(players):
 
     chosen_player = least_played(players)
     
-    return find_opponents(chosen_player, [value for key, value in teams.iteritems() if key!=chosen_player.team])
+    return find_opponents(chosen_player, [value for key, value in teams.items() if key!=chosen_player.team])
 
 
 def generate_matches(players, max_matches = 10):
