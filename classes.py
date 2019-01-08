@@ -67,6 +67,7 @@ class Match:
     def __init__(self, players=None):
         self.players = []
         self.result = []
+        self.notes = []
         self.location = None
         self.processed = False
         # maybe I should implement match stats here,

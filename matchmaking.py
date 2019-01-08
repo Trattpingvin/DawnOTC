@@ -6,39 +6,51 @@ from classes import Match
 def rank_difference(player1, player2):
     return abs(player1.bracket-player2.bracket)
 
-def find_best_opponents(player, team):
-    """ look through team to find the best opponents to player"""
+def find_best_opponents(chosen_player, team):
+    """ look through team to find the best opponents to chosen_player"""
 
     #add players, lowest rank differnce first, until we have at least two candidates
 
     pool = []
-    rank_diffs = [(p, rank_difference(player, p)) for p in team]
+    note = ""
+    rank_diffs = [(p, rank_difference(chosen_player, p)) for p in team]
     
     rank_diffs_sorted = sorted(rank_diffs, key=lambda tup: tup[1])
-
-    best_matched_rank = rank_diffs_sorted[0][1]
+    best_matched_rank_diff_ever = rank_diffs_sorted[0][1]
+    best_matched_rank_diff = rank_diffs_sorted[0][1]
     for p, rank in rank_diffs_sorted:
-        if rank==best_matched_rank:
+        if rank==best_matched_rank_diff:
             pool.append(p)
             continue
         elif len(pool)<2:
-            best_matched_rank = rank
+            best_matched_rank_diff = rank
             pool.append(p)
             continue
-        return pool 
-    return pool
+        break
+
+    if best_matched_rank_diff_ever>=1:
+        note = "Bad matching from team "+str(pool[0].team)+" because the rank difference is "+str(best_matched_rank_diff_ever)
+    for player in pool:
+        if rank_difference(chosen_player, player)>=best_matched_rank_diff_ever+2:
+            pool.remove(pool.index(player))
+            print "Removed big rank difference in find_best_opponents"
+
+    return pool, note
 
 def find_opponents(player, otherteams):
-    match = [player] 
-
+    match = Match()
+    match.players.append(player)
+    notes = []
     for team in otherteams:
         assert len(team)>0
-        pool = find_best_opponents(player, team)
+        pool, note = find_best_opponents(player, team)
+        if note:
+            notes.append(note)
         assert len(pool)>0
-        match.append(random.choice(pool)) #we could look at preferences here instead of just taking one at random
+        
+        match.players.append(random.choice(pool)) #we could look at preferences here instead of just taking one at random
         # or just take the one with least amount of games played? but then we have no random factor
-    if len(match)==1:
-        pdb.set_trace()
+    match.notes = notes[:]
     return match
 
 def least_played(players):
@@ -104,10 +116,10 @@ def generate_matches(players, max_matches = 10):
     matches = []
 
     for _ in range(max_matches):
-        match_raw = generate_a_match(players)
-        for player in match_raw:
+        match = generate_a_match(players)
+        for player in match.players:
             player.matches_assigned += 1 #STATE CHANGE ALERT
 
-        match = Match(match_raw)
+
         matches.append(match)
     return matches
