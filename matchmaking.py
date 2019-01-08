@@ -32,7 +32,7 @@ def find_best_opponents(chosen_player, team):
         note = "Bad matching from team "+str(pool[0].team)+" because the rank difference is "+str(best_matched_rank_diff_ever)
     for player in pool:
         if rank_difference(chosen_player, player)>=best_matched_rank_diff_ever+2:
-            pool.remove(pool.index(player))
+            pool.remove(player)
             print("Removed big rank difference in find_best_opponents")
 
     return pool, note
