@@ -5,7 +5,7 @@ from random import random
 
 import trueskill as ts
 
-from parameters import *
+from dawnotc.parameters import *
 
 
 class Player:
