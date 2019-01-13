@@ -3,10 +3,10 @@ from random import choice, randint, random, shuffle
 
 import trueskill as ts
 
-import matchmaking
-import testing
-from classes import Match, Player
-from parameters import *
+import dawnotc.matchmaking
+import dawnotc.testing
+from dawnotc.classes import Match, Player
+from dawnotc.parameters import *
 
 
 def setup_brackets(players):

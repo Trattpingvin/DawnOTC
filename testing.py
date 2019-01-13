@@ -4,7 +4,7 @@ from random import random, shuffle
 
 import trueskill as ts
 
-from classes import Match, Player
+from dawnotc.classes import Match, Player
 
 
 def get_data(name):
@@ -97,7 +97,7 @@ def get_real_participants():
 
 def signups():
     """using real participants, return dict of players who have signed up for the tournament."""
-    p = get_data_csv("tournament_records.csv")
+    p = get_data_csv("dawnotc/tournament_records.csv")
     ns = get_real_participants()
     p_signups = {}
 

@@ -1,7 +1,7 @@
 from collections import defaultdict
 import random
 import pdb
-from classes import Match
+from dawnotc.classes import Match
 
 def rank_difference(player1, player2):
     return abs(player1.bracket-player2.bracket)
