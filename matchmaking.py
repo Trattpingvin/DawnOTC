@@ -101,7 +101,8 @@ def generate_a_match(players):
 
     #availability, team
     for v in players.values():
-        t = v.team
+	if instanceof(v.team, int): t = v.team
+        else: t = v.team.id
         if v.available: teams[t].append(v)
 
     teams_sorted = sorted(teams.values(), key=lambda v:len(v))
@@ -124,7 +125,8 @@ def generate_matches(players, max_matches = 10):
     """Changes player state
     """
     matches = []
-
+    import pdb
+    pdb.set_trace()
     for _ in range(max_matches):
         match = generate_a_match(players)
         for player in match.players:
