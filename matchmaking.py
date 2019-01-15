@@ -101,7 +101,7 @@ def generate_a_match(players):
 
     #availability, team
     for v in players.values():
-	if instanceof(v.team, int): t = v.team
+        if instanceof(v.team, int): t = v.team
         else: t = v.team.id
         if v.available: teams[t].append(v)
 
