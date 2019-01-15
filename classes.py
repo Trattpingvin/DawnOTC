@@ -22,7 +22,7 @@ class Player:
         self.awards = {"op":0, "nv":0, "d1":0, "d2":0, "d3":0, "d4":0}
 
         #matchmaking related
-        self.available = True
+        self.availability = True
         self.matches_played = 0
         self.matches_assigned = 0
         self.preference = [0,0,0] #0 is no info, 1 is preferred, -1 is avoided.
@@ -40,7 +40,7 @@ class Player:
         e = "Team: {} | ".format(self.team)
         f = "TS: {:06.3f} | ".format(round(self.rnk,3))
         g = "W:{} L:{} P:{} | ".format(self.wins*3, self.losses, self.matches_played)
-        h = "Availability: {} {}".format("#" if self.available else ".", self.preference)
+        h = "Availability: {} {}".format("#" if self.availability else ".", self.preference)
         return a+b+c+d+e+f+g+h
     
     #compare strength of players, using bracket (primary) and rank (secondary)

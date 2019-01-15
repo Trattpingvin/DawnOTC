@@ -92,6 +92,12 @@ def least_played(players):
 
     return chosen_player
 
+def available(avail, day):
+    if isinstance(avail, int):
+        days = [None, 0b1, 0b10, 0b100, 0b1000]
+        return days[day]&avail
+    else:
+        return avail
 
 def generate_a_match(players):
     """pick a starting person -- the least flexible & least played person
@@ -125,8 +131,6 @@ def generate_matches(players, max_matches = 10):
     """Changes player state
     """
     matches = []
-    import pdb
-    pdb.set_trace()
     for _ in range(max_matches):
         match = generate_a_match(players)
         for player in match.players:
