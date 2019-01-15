@@ -99,7 +99,7 @@ def available(avail, day):
     else:
         return avail
 
-def generate_a_match(players):
+def generate_a_match(players, day):
     """pick a starting person -- the least flexible & least played person
     look at other teams to find best match < 3 teams will try to match this person
     """
@@ -107,9 +107,8 @@ def generate_a_match(players):
 
     #availability, team
     for v in players.values():
-        if instanceof(v.team, int): t = v.team
-        else: t = v.team.id
-        if v.available: teams[t].append(v)
+        t = v.team
+        if available(v.availability, day): teams[t].append(v)
 
     teams_sorted = sorted(teams.values(), key=lambda v:len(v))
 
@@ -127,12 +126,12 @@ def generate_a_match(players):
     return find_opponents(chosen_player, [value for key, value in teams.items() if key!=chosen_player.team])
 
 
-def generate_matches(players, max_matches = 10):
+def generate_matches(players, max_matches = 10, day = 1):
     """Changes player state
     """
     matches = []
     for _ in range(max_matches):
-        match = generate_a_match(players)
+        match = generate_a_match(players, day)
         for player in match.players:
             player.matches_assigned += 1 #STATE CHANGE ALERT
 
