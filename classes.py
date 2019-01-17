@@ -25,7 +25,7 @@ class Player:
         self.availability = True
         self.matches_played = 0
         self.matches_assigned = 0
-        self.preference = [0,0,0] #0 is no info, 1 is preferred, -1 is avoided.
+        self.preference = [True,True,True] #False means Veto.
                                   #[Mars, Ceres, Io]
 
         #trueskill related
