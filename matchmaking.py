@@ -125,8 +125,9 @@ def assign_location(match):
 def available(avail, day):
     if isinstance(avail, int):
         days = [None, 0b1, 0b10, 0b100, 0b1000]
-        return days[day]&avail
+        return bool(days[day]&avail)
     else:
+        return False
         return avail
 
 def generate_a_match(players, day):
