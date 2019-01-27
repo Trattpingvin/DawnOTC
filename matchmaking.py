@@ -67,7 +67,7 @@ def least_played(players):
     """ Out of players, return the player to be chosen as base for generating a match. Should be one with least amount of matches played.  """
     
     pool = []
-    players = sorted(players.values(), key=lambda x : x.get_num_matches())#sort by least used players
+    players = sorted(players, key=lambda x : x.get_num_matches())#sort by least used players
     min_played = players[0].get_num_matches()
     current_played = min_played
         
@@ -135,11 +135,11 @@ def generate_a_match(players, day):
     look at other teams to find best match < 3 teams will try to match this person
     """
     teams = defaultdict(list)
-
+    players = [p for p in players.values() if available(p.availability, day)]
     # availability, team
-    for v in players.values():
-        t = v.team
-        if available(v.availability, day): teams[t].append(v)
+    for p in players:
+        t = p.team
+        teams[t].append(p)
 
     teams_sorted = sorted(teams.values(), key=lambda v:len(v))
 
